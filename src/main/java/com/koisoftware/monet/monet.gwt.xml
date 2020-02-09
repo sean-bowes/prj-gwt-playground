@@ -1,0 +1,46 @@
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.0//EN"
+        "http://google-web-toolkit.googlecode.com/svn/releases/2.0/distro-source/core/src/gwt-module.dtd">
+
+<module rename-to="monet">
+
+    <!-- Inherit the core Web Toolkit stuff.                  -->
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name="com.sencha.gxt.ui.GXT"/>
+    <inherits name="com.google.gwt.logging.Logging"/>
+
+    <set-property name="gwt.logging.logLevel" value="INFO"/>
+    <set-property name="gwt.logging.enabled" value="TRUE"/>
+    <set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
+    <set-property name="gwt.logging.popupHandler" value="DISABLED"/>
+    <set-property name="gxt.logging.enabled" value="false"/>
+
+    <!-- Include both base GXT themes and set the app to check for url params to activate blue -->
+    <stylesheet src="reset.css"/>
+    <inherits name="com.sencha.gxt.theme.blue.Blue"/>
+    <!--<inherits name="com.sencha.gxt.theme.gray.Gray"/>-->
+    <!--<inherits name="com.sencha.gxt.theme.neptune.Theme"/>-->
+
+    <!-- Specify the paths for translatable code -->
+    <source path='client'/>
+    <source path='shared'/>
+
+    <!-- gzip the output files by default -->
+    <inherits name='com.google.gwt.precompress.Precompress'/>
+    <inherits name="de.novanic.eventservice.GWTEventService"/>
+    <servlet path="/ServerGeneratedMessageDateTimeService"
+             class="com.koisoftware.monet.server.service.ServerGeneratedMessageDateTimeServiceImpl"/>
+    <servlet path="/gwteventservice" class="de.novanic.eventservice.service.EventServiceImpl"/>
+
+    <!--eventservice.connection.id.generator=de.novanic.eventservice.service.connection.id.SessionExtendedClientIdGenerator-->
+
+    <set-configuration-property name="CssResource.style" value="pretty"/>
+
+    <set-configuration-property name="UiBinder.useLazyWidgetBuilders" value="true"/>
+
+    <!-- Specify the app entry point class.                   -->
+    <entry-point class='com.koisoftware.monet.client.monet'/>
+
+    <!--<set-property name="gxt.user.agent" value="ie9, ie10, gecko1_9, safari5, chrome, opera" />-->
+    <set-property name="gxt.user.agent" value="chrome"/>
+
+</module>

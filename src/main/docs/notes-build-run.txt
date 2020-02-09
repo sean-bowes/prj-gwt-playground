@@ -1,0 +1,49 @@
+set PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\seanb\AppData\Local\Microsoft\WindowsApps
+set PATH=%PATH%;C:\apps\mks\mksnt
+set PATH=%PATH%;C:\apps\apache-maven-3.2.3\bin
+set PATH=%PATH%;C:\apps\java\jdk1.8.0_221\bin
+set JAVA_HOME=C:\apps\java\jdk1.8.0_221
+set JDK_HOME=%JAVA_HOME%
+set JRE_HOME=%JAVA_HOME%\jre
+set CLASSPATH=.;%JAVA_HOME%\lib;%JAVA_HOME%\jre\lib
+set MAVEN_HOME=C:\apps\apache-maven-3.2.3
+set M2_HOME=C:\apps\apache-maven-3.2.3
+set MAVEN_OPTS=-Xms256m -Xmx512m
+cd C:\apps\projects\workspace\prj-parasol
+mvn clean compile package
+
+set PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\
+set PATH=%PATH%;C:\apps\java\jdk1.8.0_221\bin
+set JAVA_HOME=C:\apps\java\jdk1.8.0_221
+set JDK_HOME=%JAVA_HOME%
+set JRE_HOME=%JAVA_HOME%\jre
+set CLASSPATH=.;%JAVA_HOME%\lib;%JAVA_HOME%\jre\lib
+cd C:\apps\mysql-8.0.17-winx64\bin
+mysqld --verbose
+
+set PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\
+set PATH=%PATH%;C:\apps\java\jdk1.8.0_221\bin
+set JAVA_HOME=C:\apps\java\jdk1.8.0_221
+set JDK_HOME=%JAVA_HOME%
+set JRE_HOME=%JAVA_HOME%\jre
+set CLASSPATH=.;%JAVA_HOME%\lib;%JAVA_HOME%\jre\lib
+cd C:\apps\mysql-workbench-8.0
+MySQLWorkbench.exe
+
+SELECT * FROM monet.user;
+shutdown
+
+set PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\
+set PATH=%PATH%;C:\apps\java\jdk1.8.0_221\bin
+set JAVA_HOME=C:\apps\java\jdk1.8.0_221
+set JDK_HOME=%JAVA_HOME%
+set JRE_HOME=%JAVA_HOME%\jre
+set CLASSPATH=.;%JAVA_HOME%\lib;%JAVA_HOME%\jre\lib
+set JBOSS_HOME=C:\apps\wildfly-17.0.1.Final
+cd C:\apps\wildfly-17.0.1.Final\bin
+standalone.bat
+
+http://127.0.0.1:9990/console/index.html
+admin/admin
+
+http://127.0.0.1:8080/parasol/
