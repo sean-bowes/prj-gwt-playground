@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="parasol" default="all">
+  
+  
+  <property file="parasol.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_antlr:antlr:2.7.7.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_aopalliance:aopalliance:1.0.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.gwt:gwt-dev:2.6.1.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/com/google/gwt/gwt-dev/2.6.1/gwt-dev-2.6.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.gwt:gwt-servlet:2.6.1.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/com/google/gwt/gwt-servlet/2.6.1/gwt-servlet-2.6.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.gwt:gwt-user:2.6.1.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/com/google/gwt/gwt-user/2.6.1/gwt-user-2.6.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sencha.gxt:gxt:3.1.1.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/com/sencha/gxt/gxt/3.1.1/gxt-3.1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.thoughtworks.xstream:xstream:1.4.7.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/com/thoughtworks/xstream/xstream/1.4.7/xstream-1.4.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-logging:commons-logging:1.1.3.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_de.novanic.gwteventservice:eventservice-rpc:1.2.1.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/de/novanic/gwteventservice/eventservice-rpc/1.2.1/eventservice-rpc-1.2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_de.novanic.gwteventservice:eventservice:1.2.1.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/de/novanic/gwteventservice/eventservice/1.2.1/eventservice-1.2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_de.novanic.gwteventservice:gwteventservice:1.2.1.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/de/novanic/gwteventservice/gwteventservice/1.2.1/gwteventservice-1.2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_dom4j:dom4j:1.6.1.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.validation:validation-api:sources:1.0.0.ga.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA-sources.jar"/>
+  </path>
+  
+  <path id="library.maven:_mysql:mysql-connector-java:5.1.34.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.sf.ehcache:ehcache-core:2.4.3.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/net/sf/ehcache/ehcache-core/2.4.3/ehcache-core-2.4.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.commons:commons-dbcp2:2.0.1.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/apache/commons/commons-dbcp2/2.0.1/commons-dbcp2-2.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.commons:commons-pool2:2.2.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/apache/commons/commons-pool2/2.2/commons-pool2-2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.aspectj:aspectjrt:1.8.3.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/aspectj/aspectjrt/1.8.3/aspectjrt-1.8.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.aspectj:aspectjtools:1.8.3.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/aspectj/aspectjtools/1.8.3/aspectjtools-1.8.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.aspectj:aspectjweaver:1.8.3.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/aspectj/aspectjweaver/1.8.3/aspectjweaver-1.8.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.5.final.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/hibernate/common/hibernate-commons-annotations/4.0.5.Final/hibernate-commons-annotations-4.0.5.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.final.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate:hibernate-core:4.3.7.final.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/hibernate/hibernate-core/4.3.7.Final/hibernate-core-4.3.7.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate:hibernate-ehcache:4.3.7.final.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/hibernate/hibernate-ehcache/4.3.7.Final/hibernate-ehcache-4.3.7.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate:hibernate-entitymanager:4.3.7.final.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/hibernate/hibernate-entitymanager/4.3.7.Final/hibernate-entitymanager-4.3.7.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.javassist:javassist:3.18.1-ga.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss.logging:jboss-logging-annotations:1.2.0.beta1.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss.logging:jboss-logging:3.1.3.ga.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.final.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss:jandex:1.1.0.final.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.json:json:20090211.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/json/json/20090211/json-20090211.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:log4j-over-slf4j:1.7.7.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/slf4j/log4j-over-slf4j/1.7.7/log4j-over-slf4j-1.7.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-simple:1.7.7.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/slf4j/slf4j-simple/1.7.7/slf4j-simple-1.7.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-aop:4.1.2.release.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-aop/4.1.2.RELEASE/spring-aop-4.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-beans:4.1.2.release.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-beans/4.1.2.RELEASE/spring-beans-4.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-context:4.1.2.release.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-context/4.1.2.RELEASE/spring-context-4.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-core:4.1.2.release.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-core/4.1.2.RELEASE/spring-core-4.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-expression:4.1.2.release.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-expression/4.1.2.RELEASE/spring-expression-4.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-jdbc:4.1.2.release.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-jdbc/4.1.2.RELEASE/spring-jdbc-4.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-orm:4.1.2.release.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-orm/4.1.2.RELEASE/spring-orm-4.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-tx:4.1.2.release.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-tx/4.1.2.RELEASE/spring-tx-4.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-web:4.1.2.release.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-web/4.1.2.RELEASE/spring-web-4.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-webmvc:4.1.2.release.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-webmvc/4.1.2.RELEASE/spring-webmvc-4.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-websocket:4.1.2.release.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-websocket/4.1.2.RELEASE/spring-websocket-4.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_xml-apis:xml-apis:1.0.b2.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar"/>
+  </path>
+  
+  <path id="library.maven:_xmlpull:xmlpull:1.1.3.1.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_xpp3:xpp3_min:1.1.4c.classpath">
+    <pathelement location="${basedir}/../../../apache-maven-3.2.3/repo/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module parasol -->
+  
+  <dirname property="module.parasol.basedir" file="${ant.file}"/>
+  
+  
+  
+  <property name="compiler.args.parasol" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="parasol.output.dir" value="${module.parasol.basedir}/target/classes"/>
+  <property name="parasol.testoutput.dir" value="${module.parasol.basedir}/target/test-classes"/>
+  
+  <path id="parasol.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="parasol.module.production.classpath">
+    <path refid="library.maven:_org.springframework:spring-context:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.1.2.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-websocket:4.1.2.release.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:gwteventservice:1.2.1.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:eventservice-rpc:1.2.1.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:eventservice:1.2.1.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-dev:2.6.1.classpath"/>
+    <path refid="library.maven:_org.json:json:20090211.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-servlet:2.6.1.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.maven:_com.sencha.gxt:gxt:3.1.1.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.3.7.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.3.ga.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging-annotations:1.2.0.beta1.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.5.final.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.18.1-ga.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_org.jboss:jandex:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-ehcache:4.3.7.final.classpath"/>
+    <path refid="library.maven:_net.sf.ehcache:ehcache-core:2.4.3.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-entitymanager:4.3.7.final.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.xstream:xstream:1.4.7.classpath"/>
+    <path refid="library.maven:_xmlpull:xmlpull:1.1.3.1.classpath"/>
+    <path refid="library.maven:_xpp3:xpp3_min:1.1.4c.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-dbcp2:2.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-pool2:2.2.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.8.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.8.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjtools:1.8.3.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.34.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-simple:1.7.7.classpath"/>
+  </path>
+  
+  <path id="parasol.runtime.production.module.classpath">
+    <pathelement location="${parasol.output.dir}"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.1.2.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-websocket:4.1.2.release.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:gwteventservice:1.2.1.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:eventservice-rpc:1.2.1.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:eventservice:1.2.1.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-dev:2.6.1.classpath"/>
+    <path refid="library.maven:_org.json:json:20090211.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-servlet:2.6.1.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.maven:_com.sencha.gxt:gxt:3.1.1.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.3.7.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.3.ga.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging-annotations:1.2.0.beta1.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.5.final.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.18.1-ga.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_org.jboss:jandex:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-ehcache:4.3.7.final.classpath"/>
+    <path refid="library.maven:_net.sf.ehcache:ehcache-core:2.4.3.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-entitymanager:4.3.7.final.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.xstream:xstream:1.4.7.classpath"/>
+    <path refid="library.maven:_xmlpull:xmlpull:1.1.3.1.classpath"/>
+    <path refid="library.maven:_xpp3:xpp3_min:1.1.4c.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-dbcp2:2.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-pool2:2.2.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.8.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.8.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjtools:1.8.3.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.34.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-simple:1.7.7.classpath"/>
+  </path>
+  
+  <path id="parasol.module.classpath">
+    <pathelement location="${parasol.output.dir}"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.1.2.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-websocket:4.1.2.release.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:gwteventservice:1.2.1.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:eventservice-rpc:1.2.1.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:eventservice:1.2.1.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-dev:2.6.1.classpath"/>
+    <path refid="library.maven:_org.json:json:20090211.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-servlet:2.6.1.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.maven:_com.sencha.gxt:gxt:3.1.1.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.3.7.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.3.ga.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging-annotations:1.2.0.beta1.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.5.final.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.18.1-ga.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_org.jboss:jandex:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-ehcache:4.3.7.final.classpath"/>
+    <path refid="library.maven:_net.sf.ehcache:ehcache-core:2.4.3.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-entitymanager:4.3.7.final.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.xstream:xstream:1.4.7.classpath"/>
+    <path refid="library.maven:_xmlpull:xmlpull:1.1.3.1.classpath"/>
+    <path refid="library.maven:_xpp3:xpp3_min:1.1.4c.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-dbcp2:2.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-pool2:2.2.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.8.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.8.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjtools:1.8.3.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.34.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-simple:1.7.7.classpath"/>
+  </path>
+  
+  <path id="parasol.runtime.module.classpath">
+    <pathelement location="${parasol.testoutput.dir}"/>
+    <pathelement location="${parasol.output.dir}"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.1.2.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.1.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-websocket:4.1.2.release.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:gwteventservice:1.2.1.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:eventservice-rpc:1.2.1.classpath"/>
+    <path refid="library.maven:_de.novanic.gwteventservice:eventservice:1.2.1.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-dev:2.6.1.classpath"/>
+    <path refid="library.maven:_org.json:json:20090211.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-servlet:2.6.1.classpath"/>
+    <path refid="library.maven:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.maven:_com.sencha.gxt:gxt:3.1.1.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.3.7.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.3.ga.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging-annotations:1.2.0.beta1.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.5.final.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.18.1-ga.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_org.jboss:jandex:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-ehcache:4.3.7.final.classpath"/>
+    <path refid="library.maven:_net.sf.ehcache:ehcache-core:2.4.3.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-entitymanager:4.3.7.final.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.xstream:xstream:1.4.7.classpath"/>
+    <path refid="library.maven:_xmlpull:xmlpull:1.1.3.1.classpath"/>
+    <path refid="library.maven:_xpp3:xpp3_min:1.1.4c.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-dbcp2:2.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-pool2:2.2.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.8.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.8.3.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjtools:1.8.3.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.34.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-simple:1.7.7.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.parasol">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.parasol">
+    <patternset refid="excluded.from.module.parasol"/>
+  </patternset>
+  
+  <path id="parasol.module.sourcepath">
+    <dirset dir="${module.parasol.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="parasol.module.test.sourcepath">
+    <dirset dir="${module.parasol.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.parasol" depends="compile.module.parasol.production,compile.module.parasol.tests" description="Compile module parasol"/>
+  
+  <target name="compile.module.parasol.production" description="Compile module parasol; production classes">
+    <mkdir dir="${parasol.output.dir}"/>
+    <javac destdir="${parasol.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.parasol}"/>
+      <bootclasspath refid="parasol.module.bootclasspath"/>
+      <classpath refid="parasol.module.production.classpath"/>
+      <src refid="parasol.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.parasol"/>
+    </javac>
+    
+    <copy todir="${parasol.output.dir}">
+      <fileset dir="${module.parasol.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.parasol.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.parasol.tests" depends="compile.module.parasol.production" description="compile module parasol; test classes" unless="skip.tests">
+    <mkdir dir="${parasol.testoutput.dir}"/>
+    <javac destdir="${parasol.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.parasol}"/>
+      <bootclasspath refid="parasol.module.bootclasspath"/>
+      <classpath refid="parasol.module.classpath"/>
+      <src refid="parasol.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.parasol"/>
+    </javac>
+    
+    <copy todir="${parasol.testoutput.dir}">
+      <fileset dir="${module.parasol.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.parasol" description="cleanup module">
+    <delete dir="${parasol.output.dir}"/>
+    <delete dir="${parasol.testoutput.dir}"/>
+  </target>
+  
+  <property name="gwt.compiler.output.parasol" value="${module.parasol.basedir}/GWTCompilerOutput_parasol"/>
+  
+  <!-- Run GWT compiler for GWT module ${gwt.module.name} -->
+  <target name="run.gwt.compiler.parasol" description="Run GWT compiler">
+    <java fork="true" classname="com.google.gwt.dev.Compiler">
+      <jvmarg line="-Xmx1024m"/>
+      <classpath>
+        <pathelement location="${gwt.sdk.home.parasol}/gwt-dev.jar"/>
+        <path refid="parasol.module.sourcepath"/>
+        <path refid="parasol.module.classpath"/>
+      </classpath>
+      <arg value="-logLevel"/>
+      <arg value="WARN"/>
+      <arg value="-war"/>
+      <arg value="${gwt.compiler.output.parasol}"/>
+      <arg value="-style"/>
+      <arg value="DETAILED"/>
+      <arg value="${gwt.module.name}"/>
+    </java>
+  </target>
+  
+  <target name="compile.gwt.parasol" depends="compile.module.parasol" description="Compile all GWT modules in module parasol">
+    <property name="gwt.sdk.home.parasol" value="${gwt.sdk.home}"/>
+    <antcall target="run.gwt.compiler.parasol">
+      <param name="gwt.module.name" value="com.koisoftware.monet.monet"/>
+    </antcall>
+  </target>
+  
+  <target name="clean.gwt.compiler.output" description="Clean GWT Compiler output directories">
+    <delete dir="${gwt.compiler.output.parasol}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.parasol, clean.artifact.parasol:gwt_compile, clean.artifact.parasol:war_exploded, clean.gwt.compiler.output" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.gwt.parasol" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.parasol:gwt_compile" value="${basedir}/target/parasol/monet"/>
+    <property name="artifact.output.parasol:war" value="${basedir}/target"/>
+    <property name="artifact.output.parasol:war_exploded" value="${basedir}/target/parasol"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.parasol.war" value="${artifacts.temp.dir}/parasol.war"/>
+  </target>
+  
+  <target name="clean.artifact.parasol:gwt_compile" description="clean parasol:gwt compile artifact output">
+    <delete dir="${artifact.output.parasol:gwt_compile}"/>
+  </target>
+  
+  <target name="clean.artifact.parasol:war_exploded" description="clean parasol:war exploded artifact output">
+    <delete dir="${artifact.output.parasol:war_exploded}"/>
+  </target>
+  
+  <target name="artifact.parasol:gwt_compile" depends="init.artifacts" description="Build &#39;parasol:gwt compile&#39; artifact">
+    <mkdir dir="${artifact.output.parasol:gwt_compile}"/>
+    <copy todir="${artifact.output.parasol:gwt_compile}">
+      <fileset dir="${gwt.compiler.output.parasol}"/>
+    </copy>
+  </target>
+  
+  <target name="artifact.parasol:war" depends="init.artifacts, artifact.parasol:war_exploded" description="Build &#39;parasol:war&#39; artifact">
+    <property name="artifact.temp.output.parasol:war" value="${artifacts.temp.dir}/parasol_war"/>
+    <mkdir dir="${artifact.temp.output.parasol:war}"/>
+    <zip destfile="${temp.jar.path.parasol.war}">
+      <zipfileset dir="${artifact.temp.output.parasol:war_exploded}"/>
+    </zip>
+    <copy file="${temp.jar.path.parasol.war}" tofile="${artifact.temp.output.parasol:war}/parasol.war"/>
+  </target>
+  
+  <target name="artifact.parasol:war_exploded" depends="init.artifacts, compile.module.parasol" description="Build &#39;parasol:war exploded&#39; artifact">
+    <mkdir dir="${artifact.output.parasol:war_exploded}"/>
+    <mkdir dir="${artifact.output.parasol:war_exploded}/WEB-INF"/>
+    <mkdir dir="${artifact.output.parasol:war_exploded}/WEB-INF/classes"/>
+    <copy todir="${artifact.output.parasol:war_exploded}/WEB-INF/classes">
+      <fileset dir="${parasol.output.dir}"/>
+    </copy>
+    <mkdir dir="${artifact.output.parasol:war_exploded}/WEB-INF/lib"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-context/4.1.2.RELEASE/spring-context-4.1.2.RELEASE.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/spring-context-4.1.2.RELEASE.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-aop/4.1.2.RELEASE/spring-aop-4.1.2.RELEASE.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/spring-aop-4.1.2.RELEASE.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/aopalliance-1.0.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-beans/4.1.2.RELEASE/spring-beans-4.1.2.RELEASE.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/spring-beans-4.1.2.RELEASE.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-core/4.1.2.RELEASE/spring-core-4.1.2.RELEASE.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/spring-core-4.1.2.RELEASE.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-expression/4.1.2.RELEASE/spring-expression-4.1.2.RELEASE.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/spring-expression-4.1.2.RELEASE.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-orm/4.1.2.RELEASE/spring-orm-4.1.2.RELEASE.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/spring-orm-4.1.2.RELEASE.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-jdbc/4.1.2.RELEASE/spring-jdbc-4.1.2.RELEASE.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/spring-jdbc-4.1.2.RELEASE.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-web/4.1.2.RELEASE/spring-web-4.1.2.RELEASE.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/spring-web-4.1.2.RELEASE.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-webmvc/4.1.2.RELEASE/spring-webmvc-4.1.2.RELEASE.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/spring-webmvc-4.1.2.RELEASE.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-tx/4.1.2.RELEASE/spring-tx-4.1.2.RELEASE.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/spring-tx-4.1.2.RELEASE.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/springframework/spring-websocket/4.1.2.RELEASE/spring-websocket-4.1.2.RELEASE.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/spring-websocket-4.1.2.RELEASE.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/de/novanic/gwteventservice/gwteventservice/1.2.1/gwteventservice-1.2.1.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/gwteventservice-1.2.1.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/de/novanic/gwteventservice/eventservice-rpc/1.2.1/eventservice-rpc-1.2.1.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/eventservice-rpc-1.2.1.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/de/novanic/gwteventservice/eventservice/1.2.1/eventservice-1.2.1.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/eventservice-1.2.1.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/com/google/gwt/gwt-dev/2.6.1/gwt-dev-2.6.1.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/gwt-dev-2.6.1.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/json/json/20090211/json-20090211.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/json-20090211.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/com/google/gwt/gwt-servlet/2.6.1/gwt-servlet-2.6.1.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/gwt-servlet-2.6.1.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/com/google/gwt/gwt-user/2.6.1/gwt-user-2.6.1.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/gwt-user-2.6.1.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/com/sencha/gxt/gxt/3.1.1/gxt-3.1.1.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/gxt-3.1.1.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/validation-api-1.0.0.GA.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA-sources.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/validation-api-1.0.0.GA-sources.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/hibernate/hibernate-core/4.3.7.Final/hibernate-core-4.3.7.Final.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/hibernate-core-4.3.7.Final.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/jboss-logging-3.1.3.GA.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/dom4j-1.6.1.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/xml-apis-1.0.b2.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/hibernate/common/hibernate-commons-annotations/4.0.5.Final/hibernate-commons-annotations-4.0.5.Final.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/hibernate-commons-annotations-4.0.5.Final.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/javassist-3.18.1-GA.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/antlr/antlr/2.7.7/antlr-2.7.7.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/antlr-2.7.7.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/jandex-1.1.0.Final.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/hibernate/hibernate-ehcache/4.3.7.Final/hibernate-ehcache-4.3.7.Final.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/hibernate-ehcache-4.3.7.Final.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/net/sf/ehcache/ehcache-core/2.4.3/ehcache-core-2.4.3.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/ehcache-core-2.4.3.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/hibernate/hibernate-entitymanager/4.3.7.Final/hibernate-entitymanager-4.3.7.Final.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/hibernate-entitymanager-4.3.7.Final.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/com/thoughtworks/xstream/xstream/1.4.7/xstream-1.4.7.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/xstream-1.4.7.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/xmlpull-1.1.3.1.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/xpp3_min-1.1.4c.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/apache/commons/commons-dbcp2/2.0.1/commons-dbcp2-2.0.1.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/commons-dbcp2-2.0.1.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/apache/commons/commons-pool2/2.2/commons-pool2-2.2.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/commons-pool2-2.2.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/commons-logging-1.1.3.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/aspectj/aspectjweaver/1.8.3/aspectjweaver-1.8.3.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/aspectjweaver-1.8.3.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/aspectj/aspectjrt/1.8.3/aspectjrt-1.8.3.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/aspectjrt-1.8.3.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/aspectj/aspectjtools/1.8.3/aspectjtools-1.8.3.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/aspectjtools-1.8.3.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/mysql-connector-java-5.1.34.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/slf4j/log4j-over-slf4j/1.7.7/log4j-over-slf4j-1.7.7.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/log4j-over-slf4j-1.7.7.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/slf4j-api-1.7.7.jar"/>
+    <copy file="${basedir}/../../../apache-maven-3.2.3/repo/org/slf4j/slf4j-simple/1.7.7/slf4j-simple-1.7.7.jar" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/lib/slf4j-simple-1.7.7.jar"/>
+    <mkdir dir="${artifact.output.parasol:war_exploded}/META-INF"/>
+    <copy file="${basedir}/target/MANIFEST.MF" tofile="${artifact.output.parasol:war_exploded}/META-INF/MANIFEST.MF"/>
+    <copy todir="${artifact.output.parasol:war_exploded}">
+      <fileset dir="${basedir}/src/main/webapp"/>
+    </copy>
+    <mkdir dir="${artifact.output.parasol:war_exploded}/WEB-INF"/>
+    <copy file="${basedir}/src/main/webapp/WEB-INF/web.xml" tofile="${artifact.output.parasol:war_exploded}/WEB-INF/web.xml"/>
+    <copy todir="${artifact.output.parasol:war_exploded}">
+      <fileset dir="${gwt.compiler.output.parasol}"/>
+    </copy>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.parasol:gwt_compile, artifact.parasol:war, artifact.parasol:war_exploded" description="Build all artifacts">
+    <mkdir dir="${artifact.output.parasol:war}"/>
+    <copy todir="${artifact.output.parasol:war}">
+      <fileset dir="${artifact.temp.output.parasol:war}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
