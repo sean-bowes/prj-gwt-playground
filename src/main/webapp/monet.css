@@ -1,0 +1,146 @@
+/** Add css rules here for your application. */
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+body, td, a, div, .p {
+    font-family: Arial, Helvetica, sans-serif
+}
+.gwt-Container-Workspace {
+    background-color: #CCE6FF;
+}
+.loginView-CenterArea {
+    background-color: #00FF00;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    color: #000000;
+    font-size: 12px;
+}
+.loginView {
+    background-image: url('images/background-panel-40pct.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    color: #000000;
+    font-size: 12px;
+}
+.gwt-loginView-Disclaimer {
+     font-family: Arial, Helvetica, sans-serif;
+     font-style: normal;
+     font-weight: normal;
+     color: #B3152C;
+     font-size: 10px;
+}
+.gwt-loginView-Disclaimer-Hover {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    color: #B3152C;
+    font-size: 10px;
+}
+.monetDetailViewNorthPanel {
+    background-image: url('images/header-banner.jpg');
+}
+.monetDetailViewWestPanel {
+    background-image: url('images/background-panel.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 90%;
+    width: 85%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.monetDetailViewCenterPanel {
+    background-image: url('images/background-panel.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 90%;
+    width: 85%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.gwt-Instance-Label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: #B3152C;
+}
+.gwt-Alerts-Label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: #B3152C;
+}
+.gwt-ViewHome-Label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: #B3152C;
+    text-decoration: underline;
+}
+.gwt-ViewHome-Label-Hover{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    color: #B3152C;
+    text-decoration: underline;
+}
+.gwt-ViewAlerts-Label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: #B3152C;
+    text-decoration: underline;
+}
+.gwt-ViewAlerts-Label-Hover{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    color: #B3152C;
+    text-decoration: underline;
+}
+.gwt-ViewAlerts-Label-Header{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: #000000;
+}
+.gwt-ViewHome-Label-Header{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: #000000;
+}
+.gwt-Logout-Label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: #B3152C;
+    text-decoration: underline;
+}
+.gwt-Logout-Label-Hover{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    color: #B3152C;
+    text-decoration: underline;
+}
+.gwt-Pipe-Label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: #B3152C;
+}
+.gwt-Clock-Label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: #B3152C;
+}

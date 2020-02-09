@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <!-- Default Page -->
+    <welcome-file-list>
+        <welcome-file>monet.html</welcome-file>
+    </welcome-file-list>
+    <!-- Spring Context -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/classes/applicationContext.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+    <!-- Event Service -->
+    <servlet>
+        <servlet-name>EventService</servlet-name>
+        <servlet-class>de.novanic.eventservice.service.EventServiceImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EventService</servlet-name>
+        <url-pattern>/monet/gwteventservice</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServerGeneratedMessageDateTimeService</servlet-name>
+        <servlet-class>com.koisoftware.monet.server.service.ServerGeneratedMessageDateTimeServiceImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServerGeneratedMessageDateTimeService</servlet-name>
+        <url-pattern>/monet/ServerGeneratedMessageDateTimeService</url-pattern>
+    </servlet-mapping>
+    <!-- Spring GWT Servlet -->
+    <servlet>
+        <servlet-name>springGwtRemoteServiceServlet</servlet-name>
+        <servlet-class>com.koisoftware.monet.server.gwt.SpringGwtService</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springGwtRemoteServiceServlet</servlet-name>
+        <url-pattern>/monet/springGwtServices/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <!--<session-timeout>15</session-timeout>-->
+        <cookie-config>
+            <http-only>true</http-only>
+            <!--<max-age>30000</max-age>-->
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+        <!--<comment>This is my special cookie configuration</comment>-->
+        <!--<domain>127.0.0.1</domain>-->
+        <!--<http-only>false</http-only>-->
+        <!--<path>/my/special/path</path>-->
+        <!--<secure>true</secure>-->
+        <!--<name>FOO_SESSION</name>-->
+    </session-config>
+</web-app>
