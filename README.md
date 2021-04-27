@@ -1,2 +1,2 @@
 # prj-playground
-Java Code Playground
+Java GWT Code Playground
